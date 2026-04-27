@@ -69,7 +69,7 @@ def _generate_data(params: dict) -> pd.DataFrame:
 
 def load_assignment(am):
     am_str = str(am).strip()
-    if not am_str or am_str == "XXXXX":
+    if not am_str or am_str == "XXXXXXX":
         raise ValueError(
             "Παρακαλώ συμπληρώστε τον ΑΜ σας στη μεταβλητή AM στην αρχή του notebook."
         )
