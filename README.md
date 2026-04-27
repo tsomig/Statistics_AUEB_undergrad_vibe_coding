@@ -15,7 +15,7 @@
 
 ## 🚀 Άνοιγμα στο Google Colab
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USER/REPO/blob/main/student_notebook.ipynb)
+[![Open In Colab](https://colab.research.google.com/
 
 > **Σημείωση:** αλλάξτε `USER/REPO` παραπάνω με τα πραγματικά στοιχεία του \en{repo} σας. Το ίδιο και στο πρώτο κελί του notebook.
 
