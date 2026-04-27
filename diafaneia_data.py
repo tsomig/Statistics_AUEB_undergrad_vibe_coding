@@ -1,26 +1,3 @@
-"""
-diafaneia_data.py
-=================
-Δομικό υπόσχεμα της εργασίας «Δράση Διαφάνεια — Βραχυχρόνια Μίσθωση».
-Δημιουργεί τα προσωποποιημένα δεδομένα και τις σταθερές της εκφώνησης
-για κάθε ΑΜ φοιτητή/τριας.
-
-Χρήση από φοιτητή (μέσα στο Colab notebook):
-
-    from diafaneia_data import load_assignment
-    AM = "1250072"
-    df, constants = load_assignment(AM)
-
-Επιστρέφει:
-    df         — pandas DataFrame με στήλες property_id, declared_revenue,
-                 electricity_kwh
-    constants  — dict με τις σταθερές της εκφώνησης (N, TAU, K, W0, PI, P, Q)
-
-Σημείωση: ο σπόρος SHA-256(AM) είναι ντετερμινιστικός, οπότε ο καθηγητής
-μπορεί να αναπαράγει τα ίδια ακριβώς δεδομένα και απαντήσεις από την
-πλευρά του για τους σκοπούς της βαθμολόγησης.
-"""
-
 import hashlib
 import numpy as np
 import pandas as pd
@@ -33,11 +10,6 @@ def _seed_from_am(am: str) -> int:
 
 
 def _parameters_for_am(am: str) -> dict:
-    """
-    Παράγει όλες τις παραμέτρους της εργασίας για δοθέν ΑΜ.
-    Όλα τα εύρη είναι έτσι επιλεγμένα ώστε να εξασφαλίζεται αριθμητική
-    ευστάθεια και διδακτικά ενδιαφέροντα αποτελέσματα.
-    """
     rng = np.random.default_rng(_seed_from_am(am))
 
     # --- Πληθυσμιακές παράμετροι (Y, W) = (log-έσοδα, log-κατανάλωση) ---
@@ -96,21 +68,6 @@ def _generate_data(params: dict) -> pd.DataFrame:
 
 
 def load_assignment(am):
-    """
-    Κύρια συνάρτηση. Φορτώνει τα δεδομένα και τις σταθερές για δοθέν ΑΜ.
-
-    Parameters
-    ----------
-    am : str
-        Ο Αριθμός Μητρώου του φοιτητή/τριας.
-
-    Returns
-    -------
-    df : pandas.DataFrame
-        Δεδομένα ακινήτων (στήλες: property_id, declared_revenue, electricity_kwh)
-    constants : dict
-        Σταθερές της εκφώνησης: AM, N, TAU, K, W0, PI, P, Q
-    """
     am_str = str(am).strip()
     if not am_str or am_str == "XXXXX":
         raise ValueError(
